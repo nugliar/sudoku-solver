@@ -1,10 +1,24 @@
 class SudokuSolver {
 
   validate(puzzleString) {
+    const puz = puzzleString;
+
+    if (!puz) {
+      throw new Error('invalid puzzle');
+    }
+    if (!(typeof puz === 'string' || puz instanceof String)) {
+      throw new Error('invalid puzzle');
+    }
+    if (puz.length !== 81) {
+      throw new Error('Expected puzzle to be 81 characters long');
+    }
+    if (puz.match(/[0-9.]/g).length !== 81) {
+      throw new Error('Invalid characters in puzzle');
+    }
   }
 
   checkRowPlacement(puzzleString, row, column, value) {
-    const r = row.charCodeAt(0) - 'A'.charCodeAt(0);
+    const r = row.toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
     const c = Number(column) - 1;
     const start = 9 * r;
 
@@ -21,7 +35,7 @@ class SudokuSolver {
   }
 
   checkColPlacement(puzzleString, row, column, value) {
-    const r = row.charCodeAt(0) - 'A'.charCodeAt(0);
+    const r = row.toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
     const c = Number(column) - 1;
 
     if (puzzleString[9 * r + c] != '.') {
@@ -37,7 +51,7 @@ class SudokuSolver {
   }
 
   checkRegionPlacement(puzzleString, row, column, value) {
-    const r = row.charCodeAt(0) - 'A'.charCodeAt(0);
+    const r = row.toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
     const c = Number(column) - 1;
     const regionRow = parseInt(r / 3) * 3;
     const regionCol = parseInt(c / 3) * 3;
