@@ -13,7 +13,7 @@ module.exports = function (app) {
       const value = req.body.value;
 
       if (!puzzle || !coordinate || !value) {
-        return res.json({ error: 'required field(s) missing' });
+        return res.json({ error: 'Required field(s) missing' });
       }
       try {
         solver.validate(puzzle);
