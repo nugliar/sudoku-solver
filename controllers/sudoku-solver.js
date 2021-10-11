@@ -72,6 +72,12 @@ class SudokuSolver {
 
   solve(puzzleString) {
 
+    try {
+      this.validate(puzzleString);
+    } catch(e) {
+      return null;
+    }
+
     const isValid = (puzzle, idx, val) => {
       const rowLabels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
       const r = rowLabels[parseInt(idx / 9)];
