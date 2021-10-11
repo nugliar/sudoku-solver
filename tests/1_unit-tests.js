@@ -42,4 +42,17 @@ suite('UnitTests', () => {
       assert.equal(error.message, 'Invalid characters in puzzle');
     }
   })
+
+  test('Invalid characters in puzzle string', () => {
+    const puzzle = 'A.9..5.1.85.4....BC32......1...69.83.9.....6.62.71...9......1945....4.37.4.3..6..';
+    let error;
+
+    try {
+      solver.validate(puzzle)
+    } catch(e) {
+      error = e;
+    } finally {
+      assert.equal(error.message, 'Invalid characters in puzzle');
+    }
+  })
 });

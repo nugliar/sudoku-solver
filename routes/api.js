@@ -67,6 +67,8 @@ module.exports = function (app) {
         return res.json({ error: e.message });
       }
 
+      console.log('start solving....');
+
       const solution = solver.solve(puzzleString);
 
       if (solution === null) {
