@@ -58,7 +58,7 @@ module.exports = function (app) {
       const puzzleString = req.body.puzzle;
 
       if (!puzzleString) {
-        return res.json({ error: 'required field missing'});
+        return res.json({ error: 'Required field missing'});
       }
 
       try {
@@ -67,12 +67,10 @@ module.exports = function (app) {
         return res.json({ error: e.message });
       }
 
-      console.log('start solving....');
-
       const solution = solver.solve(puzzleString);
 
       if (solution === null) {
-        return res.json({ error: 'puzzle cannot be solved' });
+        return res.json({ error: 'Puzzle cannot be solved' });
       }
 
       res.json({ solution: solution });
