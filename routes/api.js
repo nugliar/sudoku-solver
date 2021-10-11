@@ -19,10 +19,10 @@ module.exports = function (app) {
         solver.validate(puzzle);
 
         if (!value.match(/^[0-9]$/g)) {
-          throw new Error('invalid value');
+          throw new Error('Invalid value');
         }
         if (!coordinate.match(/^[A-Ia-i][1-9]$/g)) {
-          throw new Error('invalid coordinate');
+          throw new Error('Invalid coordinate');
         }
       } catch (e) {
         return res.json({ error: e.message });
